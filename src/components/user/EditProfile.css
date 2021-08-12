@@ -1,0 +1,17 @@
+.account-settings-fileinput {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.account-settings-links .list-group-item.active {
+  font-weight: bold !important;
+}
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+  background: transparent !important;
+}
+.account-settings-multiselect ~ .select2-container {
+  width: 100% !important;
+}
