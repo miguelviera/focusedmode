@@ -11,7 +11,8 @@ const Header = () => {
 
   const handleSignout = (event) => {
     userHasAuthenticated(false);
-    auth.clearJWT(() => history.push("/"));
+    auth.clearJWT();
+    history.push("/")
   };
 
   return (
@@ -33,36 +34,16 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="collapse">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/todos">
-                To-do List
-              </Link>
-            </li>
-            <li className="nav-item active">
-              <Link className="nav-link" to="/pomodoros">
-                Pomodoro
-              </Link>
-            </li>
             {isAuthenticated && (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/products/new">
-                    New Product
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/todos">
+                    To-do List
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/products">
-                    My Products
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/orders">
-                    My Orders
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
-                    My Profile
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/pomodoros">
+                    Pomodoro
                   </Link>
                 </li>
               </>
@@ -71,10 +52,6 @@ const Header = () => {
           <div className="form-inline my-2 my-lg-0">
             {isAuthenticated && (
               <>
-                <Link className="btn btn-success mr-sm-2" to="/cart">
-                  <i className="fa fa-shopping-cart"></i> Cart
-                  <span className="badge badge-light">{itemTotal}</span>
-                </Link>
                 <button
                   className="btn btn-outline-success my-2 my-sm-0"
                   onClick={handleSignout}

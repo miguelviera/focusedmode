@@ -4,10 +4,11 @@ import {signin} from './api-auth.js'
 import {useHistory} from 'react-router-dom'
 import {useAppContext} from '../Context'
 
+
 import './Signin.css';
 
 export default function Signin() {
-  const {  isAuthenticated, userHasAuthenticated, setItemTotal } = useAppContext();
+  const {  isAuthenticated, userHasAuthenticated } = useAppContext();
   const jwt = auth.isAuthenticated()
   let history = useHistory();
   const [values, setValues] = useState({
@@ -23,15 +24,27 @@ export default function Signin() {
       email: values.email || undefined,
       password: values.password || undefined
     }
-    signin(user).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error})
-      } else {
-        auth.authenticate(data, () => {
-        userHasAuthenticated(true)
+    const login = false
+    fetch(
+      "https://focusedmode-1ee71-default-rtdb.firebaseio.com/users.json"
+    )
+      .then((response) => {
+        return response.json();
       })
-      }
-    })
+      .then((data) => {
+        for (const key in data) {
+          const user = {
+            id: key,
+            ...data[key]
+          };
+          if(user.email===values.email && user.password===values.password){
+            userHasAuthenticated(true)
+            auth.authenticate(key)
+            history.push('/')
+          }
+        }
+        setValues({...values, error:'Please, insert the right email and password'})
+      })
   }
 
   const handleChange = name => event => {

@@ -20,21 +20,24 @@ const Signup = () => {
     setValues({ ...values, [name]: event.target.value })
   }
 
-  const clickSubmit = (e) => {
+  const clickSubmit = async (e) => {
     e.preventDefault()
     const user = {
       name: values.name || undefined,
       email: values.email || undefined,
-      password: values.password || undefined
-    }
-    create(user).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error})
-      } else {
-        setValues({ ...values, error: '', open: true})
-        history.push("/signin");
+      password: values.password || undefined,
+      pomodoros: ['testing'],
+      todos: ['testing'],
+      testing: {
+        v: {name: 'ruben'}
       }
-    })
+    }
+    console.log('user ' + user);
+    
+    const response = await create(user)
+
+    history.push('./signin')
+    
   }   
 
   return (

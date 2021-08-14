@@ -20,7 +20,8 @@ export default class TodoItem extends Component {
           >
             <input
               type="checkbox"
-              onClick={() => handleDoneTask(id)}
+              onClick={() => handleDoneTask(id, completed)}
+              checked={completed}
               class="form-check-input"
               id="exampleCheck1"
             ></input>

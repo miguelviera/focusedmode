@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000'
+import { baseUrl } from '../apis/config'
 
 const signin = async (user) => {
   try {
@@ -17,12 +17,12 @@ const signin = async (user) => {
 }
 
 const signout = async () => {
-  try {
-    let response = await fetch(`${baseUrl}/auth/signout/`, { method: 'GET' })
-    return await response.json()
-  } catch(err) {
-    console.log(err)
-  }
+  // try {
+  //   let response = await fetch(`${baseUrl}/auth/signout/`, { method: 'GET' })
+  //   return await response.json()
+  // } catch(err) {
+  //   console.log(err)
+  // }
 }
 
 export {
