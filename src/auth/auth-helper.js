@@ -10,15 +10,13 @@ const auth = {
     else
       return false
   },
-  authenticate(jwt, cb) {
+  authenticate(jwt) {
     if (typeof window !== "undefined")
       sessionStorage.setItem('jwt', JSON.stringify(jwt))
-    cb()
   },
-  clearJWT(cb) {
+  clearJWT() {
     if (typeof window !== "undefined")
       sessionStorage.removeItem('jwt')
-    cb()
     //optional
     signout().then((data) => {
       document.cookie = "t=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"

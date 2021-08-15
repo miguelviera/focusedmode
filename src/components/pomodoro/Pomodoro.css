@@ -42,7 +42,7 @@ body {
   min-height: 600px;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 0;
+  padding: 40px 0;
 }
 
 .TaskPainel {
@@ -58,7 +58,7 @@ body {
 
 .tomato {
   height: 100px;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .dot {
@@ -68,4 +68,12 @@ body {
   background-color: red;
   border-radius: 50%;
   display: inline-block;
+}
+
+.stats {
+  padding-top: 90px;
+  height: 70%;
+  width: 70%;
+  margin: auto;
+  text-align: center;
 }

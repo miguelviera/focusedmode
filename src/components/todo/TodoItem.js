@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
 export default class TodoItem extends Component {
+  handleChange = () => {}
   render() {
     const { id, title, handleDelete, handleEdit, handleDoneTask, completed } =
       this.props;
+
+
 
     return (
       <li className="list-group-item d-flex justify-content-between">
@@ -20,18 +23,20 @@ export default class TodoItem extends Component {
           >
             <input
               type="checkbox"
-              onClick={() => handleDoneTask(id)}
-              class="form-check-input"
+              onClick={() => handleDoneTask(id, completed)}
+              onChange={this.handleChange}
+              checked={completed}
+              className="form-check-input"
               id="exampleCheck1"
             ></input>
           </span>
           <span className="mx-2 text-warning">
-            <button type="button" onClick={handleEdit} class="btn btn-warning">
+            <button type="button" onClick={handleEdit} className="btn btn-warning">
               Edit
             </button>
           </span>
           <span className="mx-2 text-danger">
-            <button type="button" onClick={handleDelete} class="btn btn-danger">
+            <button type="button" onClick={handleDelete} className="btn btn-danger">
               Delete
             </button>
           </span>

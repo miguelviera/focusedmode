@@ -11,12 +11,13 @@ const Header = () => {
 
   const handleSignout = (event) => {
     userHasAuthenticated(false);
-    auth.clearJWT(() => history.push("/"));
+    auth.clearJWT();
+    history.push("/")
   };
 
   return (
     <div className="Header">
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top headernav">
         <Link className="navbar-brand" to="/">
           FocusedMode
         </Link>
@@ -33,36 +34,21 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="collapse">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/todos">
-                To-do List
-              </Link>
-            </li>
-            <li className="nav-item active">
-              <Link className="nav-link" to="/pomodoros">
-                Pomodoro
-              </Link>
-            </li>
             {isAuthenticated && (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/products/new">
-                    New Product
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/todos">
+                    To-do List
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/products">
-                    My Products
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/pomodoros">
+                    Pomodoro
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/orders">
-                    My Orders
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/profile">
-                    My Profile
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/stats">
+                    Stats
                   </Link>
                 </li>
               </>
@@ -71,10 +57,6 @@ const Header = () => {
           <div className="form-inline my-2 my-lg-0">
             {isAuthenticated && (
               <>
-                <Link className="btn btn-success mr-sm-2" to="/cart">
-                  <i className="fa fa-shopping-cart"></i> Cart
-                  <span className="badge badge-light">{itemTotal}</span>
-                </Link>
                 <button
                   className="btn btn-outline-success my-2 my-sm-0"
                   onClick={handleSignout}

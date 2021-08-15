@@ -10,7 +10,6 @@ import auth from './auth/auth-helper'
 function App() {
   const jwt = auth.isAuthenticated()
   const [isAuthenticated, userHasAuthenticated] = useState(auth.isAuthenticated());
-  const [itemTotal, setItemTotal] = useState(0)
 
   useEffect(() => {
   }, [])
@@ -18,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <AppContext.Provider value={{ itemTotal, setItemTotal, isAuthenticated, userHasAuthenticated }}>
+        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
           <MainRouter/>
         </AppContext.Provider>
       </BrowserRouter>
