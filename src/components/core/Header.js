@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top headernav">
         <Link className="navbar-brand" to="/">
           FocusedMode
         </Link>
@@ -44,6 +44,11 @@ const Header = () => {
                 <li className="nav-item active">
                   <Link className="nav-link" to="/pomodoros">
                     Pomodoro
+                  </Link>
+                </li>
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/stats">
+                    Stats
                   </Link>
                 </li>
               </>

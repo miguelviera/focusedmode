@@ -18,7 +18,7 @@ class Todo extends Component {
   }
 
   loadData = () => {
-    fetch(baseUrl + auth.isAuthenticated() + "/pomodoros.json")
+    fetch(baseUrl + auth.isAuthenticated() + "/task.json")
       .then((response) => {
         return response.json();
       })
@@ -48,9 +48,9 @@ class Todo extends Component {
     });
   };
 
-  createPomodoro = async (newItem) => {
+  createTask = async (newItem) => {
     const response = await fetch(
-      baseUrl + auth.isAuthenticated() + "/pomodoros.json",
+      baseUrl + auth.isAuthenticated() + "/task.json",
       {
         method: "POST",
         body: JSON.stringify(newItem),
@@ -61,9 +61,9 @@ class Todo extends Component {
     );
   };
 
-  editPomodoro = async (key, completed) => {
+  editTask = async (key, completed) => {
     const response = await fetch(
-      baseUrl + auth.isAuthenticated() + "/pomodoros/"+key+"/completed.json",
+      baseUrl + auth.isAuthenticated() + "/task/"+key+"/completed.json",
       {
         method: "PUT",
         body: JSON.stringify(!completed),
@@ -83,7 +83,7 @@ class Todo extends Component {
     };
 
 
-    await this.createPomodoro(newItem);
+    await this.createTask(newItem);
 
 	this.setState({item: ''})
 
@@ -97,7 +97,7 @@ class Todo extends Component {
   };
 
   handleDoneTask = async (key, completed) => {
-	await this.editPomodoro(key, completed)
+	await this.editTask(key, completed)
     const filteredItems = this.state.items.map((item) => {
       item.key === key && (item.completed = !item.completed);
       return item;
@@ -108,9 +108,9 @@ class Todo extends Component {
     });
   };
 
-  deletePomodoro = async (key) => {
+  deleteTask = async (key) => {
     await fetch(
-      baseUrl + auth.isAuthenticated() + "/pomodoros/" + key + ".json",
+      baseUrl + auth.isAuthenticated() + "/task/" + key + ".json",
       {
         method: "DELETE",
         headers: {
@@ -121,12 +121,12 @@ class Todo extends Component {
   };
 
   handleDelete = async (key) => {
-    await this.deletePomodoro(key);
+    await this.deleteTask(key);
     this.loadData();
   };
 
   handleEdit = async (key) => {
-    await this.deletePomodoro(key);
+    await this.deleteTask(key);
 
     const selectedItem = this.state.items.find((item) => item.key === key);
 
@@ -143,7 +143,7 @@ class Todo extends Component {
   handleDeleteDoneTasks = () => {
     const filteredItems = this.state.items.filter((item) => {
       if (item.completed === true) {
-        this.deletePomodoro(item.key);
+        this.deleteTask(item.key);
         return false;
       }
       return true;
@@ -156,7 +156,7 @@ class Todo extends Component {
 
   clearList = () => {
     this.state.items.map((item) => {
-      this.deletePomodoro(item.key);
+      this.deleteTask(item.key);
     });
     this.setState({
       items: [],

@@ -20,24 +20,37 @@ const Signup = () => {
     setValues({ ...values, [name]: event.target.value })
   }
 
+  const getDate = () => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
+    return today;
+  };
+
   const clickSubmit = async (e) => {
     e.preventDefault()
     const user = {
       name: values.name || undefined,
       email: values.email || undefined,
       password: values.password || undefined,
-      pomodoros: ['testing'],
-      todos: ['testing'],
-      testing: {
-        v: {name: 'ruben'}
-      }
+      pomodoro: {
+        'Sunday': 0,
+        'Monday': 0,
+        'Tuesday': 0,
+        'Wednesday': 0,
+        'Thursday': 0,
+        'Friday': 0,
+        'Saturday': 0,
+        'date': getDate()
+      },
+      todos: []
     }
-    console.log('user ' + user);
-    
     const response = await create(user)
 
     history.push('./signin')
-    
   }   
 
   return (

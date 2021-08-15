@@ -10,6 +10,7 @@ import Signup from './components/user/Signup'
 import PrivateRoute from './auth/PrivateRoute'
 import Todo from './components/todo/Todo'
 import Pomodoro from './components/pomodoro/Pomodoro'
+import VerticalBar from './components/pomodoro/VerticalBar'
 
 
 function MainRouter () {
@@ -23,6 +24,7 @@ function MainRouter () {
                     <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/todos" component={Todo}/>
                     <Route exact path="/pomodoros" component={Pomodoro}/>
+                    <Route exact path="/stats" component={VerticalBar}/>
                     <PrivateRoute exact path="/profile" component={Profile}/>
                     <PrivateRoute exact path="/profile/edit" component={EditProfile}/>
                 </Switch>
