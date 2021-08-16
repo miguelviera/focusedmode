@@ -58,7 +58,7 @@ const Header = () => {
             {isAuthenticated && (
               <>
                 <button
-                  className="btn btn-outline-success my-2 my-sm-0"
+                  className="btn btn-success my-2 my-sm-0"
                   onClick={handleSignout}
                   type="submit"
                 >
