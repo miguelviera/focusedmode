@@ -47,7 +47,7 @@ const Home = () => {
                 <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-            <p class="copyright">FocusedMode © 2021</p>
+            <p class="copyright">FocusedMode © 2022</p>
         </footer>
     </div>
     </>
